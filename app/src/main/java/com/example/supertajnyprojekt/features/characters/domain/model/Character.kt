@@ -1,6 +1,6 @@
 package com.example.supertajnyprojekt.features.characters.domain.model
 
-class Character(
+data class Character(
     val created: String,
     val episode: List<String>,
     val gender: String,
