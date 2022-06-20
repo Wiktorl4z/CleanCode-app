@@ -3,7 +3,7 @@ package com.example.supertajnyprojekt.features.characters.presentation.model
 import com.example.supertajnyprojekt.features.characters.domain.model.Character
 import com.example.supertajnyprojekt.features.characters.domain.model.Origin
 
-class CharacterDisplayable(
+data class CharacterDisplayable(
     val created: String,
     val episode: List<String>,
     val gender: String,

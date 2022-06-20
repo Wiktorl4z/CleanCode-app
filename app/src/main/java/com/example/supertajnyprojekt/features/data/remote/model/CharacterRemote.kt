@@ -4,7 +4,6 @@ import com.example.supertajnyprojekt.features.characters.domain.model.Character
 import com.example.supertajnyprojekt.features.characters.domain.model.Origin
 import com.google.gson.annotations.SerializedName
 
-
 data class CharacterRemote(
     @SerializedName("created") val created: String,
     @SerializedName("episode") val episode: List<String>,
