@@ -12,6 +12,9 @@ data class EpisodeRemote(
     @SerializedName("name") val name: String,
     @SerializedName("url") val url: String
 ) {
+
+    companion object
+
     fun toEpisode() = Episode(
         id = id,
         name = name,

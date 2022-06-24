@@ -24,6 +24,8 @@ class EpisodeCached(
         episode.url
     )
 
+    companion object
+
     fun toEpisode() = Episode(
         id = id,
         name = name,
