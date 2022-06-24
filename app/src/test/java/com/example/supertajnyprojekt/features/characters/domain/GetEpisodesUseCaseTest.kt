@@ -1,6 +1,7 @@
 package com.example.supertajnyprojekt.features.characters.domain
 
-import com.example.supertajnyprojekt.features.characters.presentation.EpisodeRepository
+import com.example.supertajnyprojekt.features.episodes.domain.EpisodeRepository
+import com.example.supertajnyprojekt.features.episodes.domain.GetEpisodesUseCase
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.DelicateCoroutinesApi

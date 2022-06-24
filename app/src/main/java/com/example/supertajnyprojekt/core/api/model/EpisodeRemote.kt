@@ -1,6 +1,6 @@
-package com.example.supertajnyprojekt.features.data.remote.model
+package com.example.supertajnyprojekt.core.api.model
 
-import com.example.supertajnyprojekt.features.characters.domain.model.Episode
+import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
 import com.google.gson.annotations.SerializedName
 
 data class EpisodeRemote(

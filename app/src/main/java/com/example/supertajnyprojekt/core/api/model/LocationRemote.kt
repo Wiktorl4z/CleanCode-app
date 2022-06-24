@@ -1,6 +1,6 @@
-package com.example.supertajnyprojekt.features.data.remote.model
+package com.example.supertajnyprojekt.core.api.model
 
-import com.example.supertajnyprojekt.features.characters.domain.model.Location
+import com.example.supertajnyprojekt.features.locations.domain.model.Location
 import com.google.gson.annotations.SerializedName
 
 data class LocationRemote(

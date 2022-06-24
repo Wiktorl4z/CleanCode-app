@@ -2,6 +2,7 @@ package com.example.supertajnyprojekt.features.characters.presentation.model
 
 import com.example.supertajnyprojekt.features.characters.domain.model.Character
 import com.example.supertajnyprojekt.features.characters.domain.model.Origin
+import com.example.supertajnyprojekt.features.locations.presentation.model.LocationDisplayable
 
 data class CharacterDisplayable(
     val created: String,

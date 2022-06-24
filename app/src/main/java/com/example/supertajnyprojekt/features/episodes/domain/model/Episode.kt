@@ -1,4 +1,4 @@
-package com.example.supertajnyprojekt.features.characters.domain.model
+package com.example.supertajnyprojekt.features.episodes.domain.model
 
 data class Episode(
     val airDate: String,

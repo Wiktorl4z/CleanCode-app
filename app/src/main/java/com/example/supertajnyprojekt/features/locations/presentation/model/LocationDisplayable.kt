@@ -1,6 +1,6 @@
-package com.example.supertajnyprojekt.features.characters.presentation.model
+package com.example.supertajnyprojekt.features.locations.presentation.model
 
-import com.example.supertajnyprojekt.features.characters.domain.model.Location
+import com.example.supertajnyprojekt.features.locations.domain.model.Location
 
 class LocationDisplayable(
     val dimension: String,

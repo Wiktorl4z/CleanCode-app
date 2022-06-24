@@ -1,4 +1,4 @@
-package com.example.supertajnyprojekt.features.data.remote.model
+package com.example.supertajnyprojekt.core.api.model
 
 import com.example.supertajnyprojekt.features.characters.domain.model.Character
 import com.example.supertajnyprojekt.features.characters.domain.model.Origin

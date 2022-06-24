@@ -1,4 +1,4 @@
-package com.example.supertajnyprojekt.features.characters.domain.model
+package com.example.supertajnyprojekt.features.locations.domain.model
 
 data class Location(
     val dimension: String,

@@ -1,5 +1,7 @@
 package com.example.supertajnyprojekt.features.characters.domain.model
 
+import com.example.supertajnyprojekt.features.locations.domain.model.Location
+
 data class Character(
     val created: String,
     val episode: List<String>,

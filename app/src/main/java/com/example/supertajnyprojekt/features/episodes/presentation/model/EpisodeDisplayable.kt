@@ -1,6 +1,6 @@
-package com.example.supertajnyprojekt.features.characters.presentation.model
+package com.example.supertajnyprojekt.features.episodes.presentation.model
 
-import com.example.supertajnyprojekt.features.characters.domain.model.Episode
+import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
 
 data class EpisodeDisplayable(
     val airDate: String,

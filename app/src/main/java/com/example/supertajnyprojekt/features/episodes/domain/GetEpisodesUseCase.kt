@@ -1,8 +1,7 @@
-package com.example.supertajnyprojekt.features.characters.domain
+package com.example.supertajnyprojekt.features.episodes.domain
 
 import com.example.supertajnyprojekt.core.base.UseCase
-import com.example.supertajnyprojekt.features.characters.domain.model.Episode
-import com.example.supertajnyprojekt.features.characters.presentation.EpisodeRepository
+import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
 
 class GetEpisodesUseCase(private val episodeRepository: EpisodeRepository) :
     UseCase<List<Episode>, Unit>() {
