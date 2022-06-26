@@ -1,4 +1,4 @@
-package com.example.supertajnyprojekt.core.api.model
+package com.example.supertajnyprojekt.core.api.model.remote
 
 import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
 import com.google.gson.annotations.SerializedName

@@ -1,8 +1,8 @@
 package com.example.supertajnyprojekt.features.characters.presentation.model
 
 import com.example.supertajnyprojekt.features.characters.domain.model.Character
-import com.example.supertajnyprojekt.features.characters.domain.model.Origin
-import com.example.supertajnyprojekt.features.locations.presentation.model.LocationDisplayable
+import com.example.supertajnyprojekt.features.characters.domain.model.CharacterLastLocation
+import com.example.supertajnyprojekt.features.characters.domain.model.CharacterOriginLocation
 
 data class CharacterDisplayable(
     val created: String,
@@ -10,9 +10,9 @@ data class CharacterDisplayable(
     val gender: String,
     val id: Int,
     val image: String,
-    val location: LocationDisplayable,
+    val location: CharacterLastLocationDisplayable,
     val name: String,
-    val originDisplayable: OriginDisplayable,
+    val originDisplayable: CharacterOriginLocationDisplayable,
     val species: String,
     val status: String,
     val type: String,
@@ -24,9 +24,9 @@ data class CharacterDisplayable(
         gender = character.gender,
         id = character.id,
         image = character.image,
-        location = LocationDisplayable(character.location),
+        location = CharacterLastLocationDisplayable(character.location),
         name = character.name,
-        originDisplayable = OriginDisplayable(character.origin),
+        originDisplayable = CharacterOriginLocationDisplayable(character.origin),
         species = character.species,
         status = character.status,
         type = character.type,
@@ -34,12 +34,22 @@ data class CharacterDisplayable(
     )
 }
 
-data class OriginDisplayable(
+data class CharacterOriginLocationDisplayable(
     val name: String,
     val url: String
 ) {
-    constructor(origin: Origin) : this(
+    constructor(origin: CharacterOriginLocation) : this(
         name = origin.name,
         url = origin.url
+    )
+}
+
+data class CharacterLastLocationDisplayable(
+    val name: String,
+    val url: String
+) {
+    constructor(location: CharacterLastLocation) : this(
+        name = location.name,
+        url = location.url
     )
 }

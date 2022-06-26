@@ -1,4 +1,4 @@
-package com.example.supertajnyprojekt.core.api.model
+package com.example.supertajnyprojekt.core.api.model.response
 
 import com.google.gson.annotations.SerializedName
 

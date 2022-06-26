@@ -1,4 +1,4 @@
-package com.example.supertajnyprojekt.core.api.model
+package com.example.supertajnyprojekt.core.api.model.remote
 
 import com.example.supertajnyprojekt.features.locations.domain.model.Location
 import com.google.gson.annotations.SerializedName
@@ -11,6 +11,9 @@ data class LocationRemote(
     @SerializedName("type") val type: String,
     @SerializedName("url") val url: String
 ) {
+
+    companion object
+
     fun toLocation() = Location(
         dimension = dimension,
         id = id,

@@ -1,7 +1,8 @@
-package com.example.supertajnyprojekt.core.api.model
+package com.example.supertajnyprojekt.core.api.model.remote
 
 import com.example.supertajnyprojekt.features.characters.domain.model.Character
-import com.example.supertajnyprojekt.features.characters.domain.model.Origin
+import com.example.supertajnyprojekt.features.characters.domain.model.CharacterLastLocation
+import com.example.supertajnyprojekt.features.characters.domain.model.CharacterOriginLocation
 import com.google.gson.annotations.SerializedName
 
 data class CharacterRemote(
@@ -10,23 +11,26 @@ data class CharacterRemote(
     @SerializedName("gender") val gender: String,
     @SerializedName("id") val id: Int,
     @SerializedName("image") val image: String,
-    @SerializedName("location") val locationRemote: LocationRemote,
+    @SerializedName("location") val characterLastLocationRemote: CharacterLastLocationRemote,
     @SerializedName("name") val name: String,
-    @SerializedName("origin") val originRemote: OriginRemote,
+    @SerializedName("origin") val characterOriginRemote: CharacterOriginLocationRemote,
     @SerializedName("species") val species: String,
     @SerializedName("status") val status: String,
     @SerializedName("type") val type: String,
     @SerializedName("url") val url: String
 ) {
+
+    companion object
+
     fun toCharacter() = Character(
         created = created,
         episode = episode,
         gender = gender,
         id = id,
         image = image,
-        location = locationRemote.toLocation(),
+        location = characterLastLocationRemote.toLastLocation(),
         name = name,
-        origin = originRemote.toOrigin(),
+        origin = characterOriginRemote.toOriginLocation(),
         species = species,
         status = status,
         type = type,
@@ -34,11 +38,21 @@ data class CharacterRemote(
     )
 }
 
-data class OriginRemote(
+data class CharacterOriginLocationRemote(
     @SerializedName("name") val name: String,
     @SerializedName("url") val url: String
 ) {
-    fun toOrigin() = Origin(
+    fun toOriginLocation() = CharacterOriginLocation(
+        name = name,
+        url = url
+    )
+}
+
+data class CharacterLastLocationRemote(
+    @SerializedName("name") val name: String,
+    @SerializedName("url") val url: String
+) {
+    fun toLastLocation() = CharacterLastLocation(
         name = name,
         url = url
     )

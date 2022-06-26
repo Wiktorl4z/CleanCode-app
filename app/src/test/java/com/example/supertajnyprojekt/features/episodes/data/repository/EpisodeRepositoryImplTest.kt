@@ -1,7 +1,7 @@
 package com.example.supertajnyprojekt.features.episodes.data.repository
 
 import com.example.supertajnyprojekt.core.api.RickAndMortyApi
-import com.example.supertajnyprojekt.core.api.model.EpisodeResponse
+import com.example.supertajnyprojekt.core.api.model.response.EpisodeResponse
 import com.example.supertajnyprojekt.core.network.NetworkStateProvider
 import com.example.supertajnyprojekt.features.episodes.data.local.EpisodeDao
 import com.example.supertajnyprojekt.features.episodes.data.local.model.EpisodeCached
@@ -31,7 +31,7 @@ internal class EpisodeRepositoryImplTest {
             EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
 
         // when
-        runBlocking { repository.getEpisodes() }
+        runBlocking { repository.getCharacters() }
 
         //then
         coVerify { api.getEpisodes() }
@@ -52,7 +52,7 @@ internal class EpisodeRepositoryImplTest {
             EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
 
         // when
-        runBlocking { repository.getEpisodes() }
+        runBlocking { repository.getCharacters() }
 
         //then
         coVerify { episodeDao.saveEpisodes(*anyVararg()) }
@@ -73,7 +73,7 @@ internal class EpisodeRepositoryImplTest {
             EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
 
         // when
-        runBlocking { repository.getEpisodes() }
+        runBlocking { repository.getCharacters() }
 
         //then
         coVerify { episodeDao.getEpisodes() }

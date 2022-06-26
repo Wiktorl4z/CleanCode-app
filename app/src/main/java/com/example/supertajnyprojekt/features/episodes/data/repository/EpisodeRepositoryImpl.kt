@@ -13,7 +13,7 @@ class EpisodeRepositoryImpl(
     private val networkStateProvider: NetworkStateProvider
 ) : EpisodeRepository {
 
-    override suspend fun getEpisodes(): List<Episode> {
+    override suspend fun getCharacters(): List<Episode> {
         return if (networkStateProvider.isNetworkAvailable()) {
             getEpisodesFromRemote().also { saveEpisodesToLocal(it) }
         } else {

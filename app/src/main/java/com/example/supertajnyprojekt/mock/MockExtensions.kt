@@ -1,8 +1,8 @@
 package com.example.supertajnyprojekt.mock
 
-import com.example.supertajnyprojekt.core.api.model.EpisodeRemote
-import com.example.supertajnyprojekt.core.api.model.EpisodeResponse
-import com.example.supertajnyprojekt.core.api.model.InfoResponse
+import com.example.supertajnyprojekt.core.api.model.remote.EpisodeRemote
+import com.example.supertajnyprojekt.core.api.model.response.EpisodeResponse
+import com.example.supertajnyprojekt.core.api.model.response.InfoResponse
 import com.example.supertajnyprojekt.features.episodes.data.local.model.EpisodeCached
 import org.jetbrains.annotations.TestOnly
 
