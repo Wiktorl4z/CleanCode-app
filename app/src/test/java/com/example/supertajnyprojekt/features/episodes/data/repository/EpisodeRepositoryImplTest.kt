@@ -78,5 +78,4 @@ internal class EpisodeRepositoryImplTest {
         //then
         coVerify { episodeDao.getEpisodes() }
     }
-
 }
