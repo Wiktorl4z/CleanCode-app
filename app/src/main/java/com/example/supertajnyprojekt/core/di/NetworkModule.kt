@@ -1,7 +1,7 @@
 package com.example.supertajnyprojekt.core.di
 
 import com.example.supertajnyprojekt.BuildConfig
-import com.example.supertajnyprojekt.features.data.remote.RickAndMortyApi
+import com.example.supertajnyprojekt.core.api.RickAndMortyApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
