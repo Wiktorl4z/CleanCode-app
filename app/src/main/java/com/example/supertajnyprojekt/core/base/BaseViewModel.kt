@@ -14,6 +14,8 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
 
     private val _uiState by lazy { MutableLiveData<UiState>() }
 
+    val uiState: LiveData<UiState> = _uiState
+
     protected fun setIdleState() {
         _uiState.value = UiState.Idle
     }
@@ -22,11 +24,11 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
         _uiState.value = UiState.Pending
     }
 
-    protected fun showMessage(message: String) {
-        _message.value = message
-    }
-
     protected fun handleFailure(throwable: Throwable) {
         throwable.message?.let { showMessage(it) }
+    }
+
+    private fun showMessage(message: String) {
+        _message.value = message
     }
 }
