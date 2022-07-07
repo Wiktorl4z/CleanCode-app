@@ -14,4 +14,6 @@ val roomModule = module {
     }
 
     single { get<AppDatabase>().episodeDao() }
+    single { get<AppDatabase>().locationDao() }
+    single { get<AppDatabase>().characterDao() }
 }

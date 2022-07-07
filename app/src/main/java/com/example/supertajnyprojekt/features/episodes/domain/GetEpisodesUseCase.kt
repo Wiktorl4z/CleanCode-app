@@ -7,6 +7,6 @@ class GetEpisodesUseCase(private val episodeRepository: EpisodeRepository) :
     UseCase<List<Episode>, Unit>() {
 
     override suspend fun action(params: Unit): List<Episode> {
-        return episodeRepository.getCharacters()
+        return episodeRepository.getEpisodes()
     }
 }

@@ -31,7 +31,7 @@ internal class EpisodeRepositoryImplTest {
             EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
 
         // when
-        runBlocking { repository.getCharacters() }
+        runBlocking { repository.getEpisodes() }
 
         //then
         coVerify { api.getEpisodes() }
@@ -52,7 +52,7 @@ internal class EpisodeRepositoryImplTest {
             EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
 
         // when
-        runBlocking { repository.getCharacters() }
+        runBlocking { repository.getEpisodes() }
 
         //then
         coVerify { episodeDao.saveEpisodes(*anyVararg()) }
@@ -73,7 +73,7 @@ internal class EpisodeRepositoryImplTest {
             EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
 
         // when
-        runBlocking { repository.getCharacters() }
+        runBlocking { repository.getEpisodes() }
 
         //then
         coVerify { episodeDao.getEpisodes() }

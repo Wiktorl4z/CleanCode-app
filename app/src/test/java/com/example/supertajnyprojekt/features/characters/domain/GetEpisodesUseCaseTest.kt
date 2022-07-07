@@ -24,6 +24,6 @@ internal class GetEpisodesUseCaseTest {
         )
 
         //then
-        coVerify { repository.getCharacters() }
+        coVerify { repository.getEpisodes() }
     }
 }
