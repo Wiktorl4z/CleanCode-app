@@ -1,21 +1,15 @@
 package com.example.supertajnyprojekt.features.episodes.presentation
 
-import androidx.lifecycle.*
-import com.example.supertajnyprojekt.core.base.UiState
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
+import com.example.supertajnyprojekt.core.base.BaseViewModel
 import com.example.supertajnyprojekt.features.episodes.domain.GetEpisodesUseCase
 import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
 import com.example.supertajnyprojekt.features.episodes.presentation.model.EpisodeDisplayable
-import com.hadilq.liveevent.LiveEvent
 
-class EpisodeViewModel(private val getEpisodesUseCase: GetEpisodesUseCase) : ViewModel() {
-
-    private val _message by lazy { LiveEvent<String>() }
-
-    val message: LiveData<String> = _message
-
-    private val _uiState by lazy { MutableLiveData<UiState>() }
-
-    val uiState: LiveData<UiState> = _uiState
+class EpisodeViewModel(private val getEpisodesUseCase: GetEpisodesUseCase) : BaseViewModel() {
 
     private val _episodes by lazy {
         MutableLiveData<List<Episode>>()
@@ -33,26 +27,8 @@ class EpisodeViewModel(private val getEpisodesUseCase: GetEpisodesUseCase) : Vie
             scope = viewModelScope
         ) { result ->
             setIdleState()
-            result.onSuccess { episodes ->
-                episodeLiveData.value = episodes
-            }
-            result.onFailure { throwable ->
-                throwable.message?.let {
-                    showMessage(it)
-                }
-            }
+            result.onSuccess { episodeLiveData.value = it }
+            result.onFailure { handleFailure(it) }
         }
-    }
-
-    private fun setIdleState() {
-        _uiState.value = UiState.Idle
-    }
-
-    private fun setPendingState() {
-        _uiState.value = UiState.Pending
-    }
-
-    private fun showMessage(message: String) {
-        _message.value = message
     }
 }
