@@ -1,13 +1,13 @@
-package com.example.supertajnyprojekt.features.episodes.presentation
+package com.example.supertajnyprojekt.features.locations.presentation
 
 import androidx.fragment.app.viewModels
 import com.example.supertajnyprojekt.R
 import com.example.supertajnyprojekt.core.base.BaseFragment
 
 
-class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode) {
+class LocationFragment : BaseFragment<LocationViewModel>(R.layout.fragment_location) {
 
-    override val viewModel: EpisodeViewModel by viewModels()
+    override val viewModel: LocationViewModel by viewModels()
 
     override fun initViews() {
         super.initViews()
@@ -30,10 +30,10 @@ class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode
     }
 
     private fun subscribeToObservers() {
-        viewModel.episodes.observe(this) {
+        viewModel.locations.observe(this) {
             // code to display episodes
         }
-        viewModel.message.observe(this){
+        viewModel.message.observe(this) {
 
         }
     }
