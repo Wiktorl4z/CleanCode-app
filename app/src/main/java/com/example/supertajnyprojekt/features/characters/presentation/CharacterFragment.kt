@@ -33,8 +33,5 @@ class CharacterFragment : BaseFragment<CharacterViewModel>(R.layout.fragment_cha
         viewModel.characters.observe(this) {
             // code to display episodes
         }
-        viewModel.message.observe(this) {
-
-        }
     }
 }
