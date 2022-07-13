@@ -1,6 +1,8 @@
 package com.example.supertajnyprojekt.features.episodes.data.repository
 
 import com.example.supertajnyprojekt.core.api.RickAndMortyApi
+import com.example.supertajnyprojekt.core.exception.ErrorWrapper
+import com.example.supertajnyprojekt.core.exception.callOrThrow
 import com.example.supertajnyprojekt.core.network.NetworkStateProvider
 import com.example.supertajnyprojekt.features.episodes.data.local.EpisodeDao
 import com.example.supertajnyprojekt.features.episodes.data.local.model.EpisodeCached
@@ -10,12 +12,13 @@ import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
 class EpisodeRepositoryImpl(
     private val api: RickAndMortyApi,
     private val dao: EpisodeDao,
-    private val networkStateProvider: NetworkStateProvider
+    private val networkStateProvider: NetworkStateProvider,
+    private val errorWrapper: ErrorWrapper
 ) : EpisodeRepository {
 
     override suspend fun getEpisodes(): List<Episode> {
         return if (networkStateProvider.isNetworkAvailable()) {
-            getEpisodesFromRemote().also { saveEpisodesToLocal(it) }
+            callOrThrow(errorWrapper) { getEpisodesFromRemote() }.also { saveEpisodesToLocal(it) }
         } else {
             getEpisodesFromLocal()
         }

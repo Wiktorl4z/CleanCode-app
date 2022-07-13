@@ -1,6 +1,8 @@
 package com.example.supertajnyprojekt.features.characters.data.repository
 
 import com.example.supertajnyprojekt.core.api.RickAndMortyApi
+import com.example.supertajnyprojekt.core.exception.ErrorWrapper
+import com.example.supertajnyprojekt.core.exception.callOrThrow
 import com.example.supertajnyprojekt.core.network.NetworkStateProvider
 import com.example.supertajnyprojekt.features.characters.data.local.CharacterDao
 import com.example.supertajnyprojekt.features.characters.data.local.model.CharacterCached
@@ -10,12 +12,13 @@ import com.example.supertajnyprojekt.features.characters.domain.model.Character
 class CharacterRepositoryImpl(
     private val api: RickAndMortyApi,
     private val dao: CharacterDao,
-    private val networkStateProvider: NetworkStateProvider
+    private val networkStateProvider: NetworkStateProvider,
+    private val errorWrapper: ErrorWrapper
 ) : CharacterRepository {
 
     override suspend fun getCharacters(): List<Character> {
         return if (networkStateProvider.isNetworkAvailable()) {
-            getCharactersFromRemote().also { saveCharacterToLocal(it) }
+            callOrThrow(errorWrapper) { getCharactersFromRemote() }.also { saveCharacterToLocal(it) }
         } else {
             getCharactersFromLocal()
         }

@@ -5,11 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.supertajnyprojekt.core.base.BaseViewModel
+import com.example.supertajnyprojekt.core.exception.ErrorMapper
 import com.example.supertajnyprojekt.features.characters.domain.GetCharacterUseCase
 import com.example.supertajnyprojekt.features.characters.domain.model.Character
 import com.example.supertajnyprojekt.features.characters.presentation.model.CharacterDisplayable
 
-class CharacterViewModel(private val getCharacterUseCase: GetCharacterUseCase) : BaseViewModel() {
+class CharacterViewModel(
+    private val getCharacterUseCase: GetCharacterUseCase,
+    errorMapper: ErrorMapper
+) : BaseViewModel(errorMapper) {
 
     private val _characters by lazy {
         MutableLiveData<List<Character>>()
