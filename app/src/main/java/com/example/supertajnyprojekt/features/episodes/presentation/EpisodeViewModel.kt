@@ -8,10 +8,12 @@ import com.example.supertajnyprojekt.core.base.BaseViewModel
 import com.example.supertajnyprojekt.core.exception.ErrorMapper
 import com.example.supertajnyprojekt.features.episodes.domain.GetEpisodesUseCase
 import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
+import com.example.supertajnyprojekt.features.episodes.navigation.EpisodeNavigation
 import com.example.supertajnyprojekt.features.episodes.presentation.model.EpisodeDisplayable
 
 class EpisodeViewModel(
     private val getEpisodesUseCase: GetEpisodesUseCase,
+    private val episodeNavigation: EpisodeNavigation,
     errorMapper: ErrorMapper
 ) : BaseViewModel(errorMapper) {
 
@@ -34,5 +36,9 @@ class EpisodeViewModel(
             result.onSuccess { episodeLiveData.value = it }
             result.onFailure { handleFailure(it) }
         }
+    }
+
+    fun onEpisodeClick(episode: EpisodeDisplayable) {
+        episodeNavigation.openEpisodeDetailsScreen(episode)
     }
 }

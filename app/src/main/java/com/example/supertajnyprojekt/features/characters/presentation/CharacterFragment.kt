@@ -1,13 +1,13 @@
 package com.example.supertajnyprojekt.features.characters.presentation
 
-import androidx.fragment.app.viewModels
 import com.example.supertajnyprojekt.R
 import com.example.supertajnyprojekt.core.base.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CharacterFragment : BaseFragment<CharacterViewModel>(R.layout.fragment_character) {
 
-    override val viewModel: CharacterViewModel by viewModels()
+    override val viewModel: CharacterViewModel by viewModel()
 
     override fun initViews() {
         super.initViews()

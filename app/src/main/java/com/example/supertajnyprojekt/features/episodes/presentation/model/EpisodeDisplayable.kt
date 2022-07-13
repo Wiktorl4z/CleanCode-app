@@ -1,7 +1,11 @@
 package com.example.supertajnyprojekt.features.episodes.presentation.model
 
+import android.os.Parcelable
 import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
+import kotlinx.parcelize.Parcelize
 
+
+@Parcelize
 data class EpisodeDisplayable(
     val airDate: String,
     val characters: List<String>,
@@ -9,7 +13,7 @@ data class EpisodeDisplayable(
     val id: Int,
     val name: String,
     val url: String
-) {
+) : Parcelable {
     constructor(episode: Episode) : this(
         id = episode.id,
         name = episode.name,

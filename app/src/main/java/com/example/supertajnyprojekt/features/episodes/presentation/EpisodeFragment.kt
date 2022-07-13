@@ -1,13 +1,13 @@
 package com.example.supertajnyprojekt.features.episodes.presentation
 
-import androidx.fragment.app.viewModels
 import com.example.supertajnyprojekt.R
 import com.example.supertajnyprojekt.core.base.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode) {
 
-    override val viewModel: EpisodeViewModel by viewModels()
+    override val viewModel: EpisodeViewModel by viewModel()
 
     override fun initViews() {
         super.initViews()
@@ -33,7 +33,7 @@ class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode
         viewModel.episodes.observe(this) {
             // code to display episodes
         }
-        viewModel.message.observe(this){
+        viewModel.message.observe(this) {
 
         }
     }

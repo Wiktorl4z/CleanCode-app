@@ -1,13 +1,13 @@
 package com.example.supertajnyprojekt.features.locations.presentation
 
-import androidx.fragment.app.viewModels
 import com.example.supertajnyprojekt.R
 import com.example.supertajnyprojekt.core.base.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LocationFragment : BaseFragment<LocationViewModel>(R.layout.fragment_location) {
 
-    override val viewModel: LocationViewModel by viewModels()
+    override val viewModel: LocationViewModel by viewModel()
 
     override fun initViews() {
         super.initViews()
