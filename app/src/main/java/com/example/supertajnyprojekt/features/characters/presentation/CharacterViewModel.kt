@@ -16,8 +16,10 @@ class CharacterViewModel(private val getCharacterUseCase: GetCharacterUseCase) :
             .also { getCharacters(it) }
     }
 
-    val characters: LiveData<List<CharacterDisplayable>> = _characters.map { characters ->
-        characters.map { CharacterDisplayable(it) }
+    val characters: LiveData<List<CharacterDisplayable>> by lazy {
+        _characters.map { characters ->
+            characters.map { CharacterDisplayable(it) }
+        }
     }
 
     private fun getCharacters(characterLiveData: MutableLiveData<List<Character>>) {
