@@ -13,14 +13,20 @@ data class Character(
     val status: String,
     val type: String,
     val url: String
-)
+) {
+    companion object
+}
 
 data class CharacterOriginLocation(
     val name: String,
     val url: String
-)
+) {
+    companion object
+}
 
 data class CharacterLastLocation(
     val name: String,
     val url: String
-)
+) {
+    companion object
+}

@@ -8,8 +8,13 @@ import com.example.supertajnyprojekt.core.api.model.response.LocationResponse
 import com.example.supertajnyprojekt.features.characters.data.local.model.CharacterCached
 import com.example.supertajnyprojekt.features.characters.data.local.model.CharacterLastLocationCached
 import com.example.supertajnyprojekt.features.characters.data.local.model.CharacterOriginLocationCached
+import com.example.supertajnyprojekt.features.characters.domain.model.Character
+import com.example.supertajnyprojekt.features.characters.domain.model.CharacterLastLocation
+import com.example.supertajnyprojekt.features.characters.domain.model.CharacterOriginLocation
 import com.example.supertajnyprojekt.features.episodes.data.local.model.EpisodeCached
+import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
 import com.example.supertajnyprojekt.features.locations.data.local.model.LocationCached
+import com.example.supertajnyprojekt.features.locations.domain.model.Location
 import org.jetbrains.annotations.TestOnly
 
 @TestOnly
@@ -88,9 +93,15 @@ fun CharacterRemote.Companion.mock() = CharacterRemote(
     episode = emptyList(),
     gender = "character gender",
     image = "image url",
-    characterLastLocationRemote = CharacterLastLocationRemote(name = "location name", url = "location url"),
+    characterLastLocationRemote = CharacterLastLocationRemote(
+        name = "location name",
+        url = "location url"
+    ),
     name = "character name",
-    characterOriginRemote = CharacterOriginLocationRemote(name = "location name", url = "location url"),
+    characterOriginRemote = CharacterOriginLocationRemote(
+        name = "location name",
+        url = "location url"
+    ),
     species = "character species",
     status = "character status",
     type = "character type",
@@ -121,4 +132,46 @@ fun CharacterCached.Companion.mock() = CharacterCached(
     status = "character status",
     type = "character type",
     url = "character url"
+)
+
+@TestOnly
+fun Episode.Companion.mock() = Episode(
+    airDate = "airDate",
+    characters = listOf(),
+    code = "code",
+    id = 1,
+    name = "name",
+    url = "url"
+)
+
+@TestOnly
+fun Location.Companion.mock() = Location(
+    dimension = "dimension",
+    id = 1,
+    name = "name",
+    residents = listOf(),
+    type = "type",
+    url = "url"
+)
+
+@TestOnly
+fun Character.Companion.mock() = Character(
+    created = "created",
+    episode = listOf(),
+    gender = "gender",
+    id = 1,
+    image = "image",
+    location = CharacterLastLocation(
+        name = "location name",
+        url = "location url"
+    ),
+    name = "character name",
+    origin = CharacterOriginLocation(
+        name = "location name",
+        url = "location url"
+    ),
+    species = "species",
+    status = "status",
+    type = "type",
+    url = "url"
 )

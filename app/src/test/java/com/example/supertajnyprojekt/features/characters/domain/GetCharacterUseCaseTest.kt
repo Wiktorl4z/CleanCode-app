@@ -1,6 +1,5 @@
 package com.example.supertajnyprojekt.features.characters.domain
 
-import com.example.supertajnyprojekt.features.characters.presentation.CharacterRepository
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.DelicateCoroutinesApi

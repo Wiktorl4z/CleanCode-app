@@ -1,7 +1,7 @@
 package com.example.supertajnyprojekt.features.characters.domain
 
-import com.example.supertajnyprojekt.features.locations.presentation.LocationRepository
 import com.example.supertajnyprojekt.features.locations.domain.GetLocationUseCase
+import com.example.supertajnyprojekt.features.locations.domain.LocationRepository
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.DelicateCoroutinesApi
