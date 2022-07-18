@@ -5,9 +5,9 @@ import com.example.supertajnyprojekt.core.navigation.FragmentNavigator
 import com.example.supertajnyprojekt.features.episodes.details.presentation.EpisodeDetailsFragment
 import com.example.supertajnyprojekt.features.episodes.presentation.model.EpisodeDisplayable
 
-class EpisodeNavigationImpl(
+class EpisodeNavigatorImpl(
     private val fragmentNavigator: FragmentNavigator
-) : EpisodeNavigation {
+) : EpisodeNavigator {
     override fun openEpisodeDetailsScreen(episode: EpisodeDisplayable) {
         fragmentNavigator.navigateTo(
             R.id.action_navigate_from_episodes_screen_to_episode_details_screen,

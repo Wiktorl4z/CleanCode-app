@@ -14,6 +14,7 @@ data class EpisodeDisplayable(
     val name: String,
     val url: String
 ) : Parcelable {
+
     constructor(episode: Episode) : this(
         id = episode.id,
         name = episode.name,
@@ -22,4 +23,6 @@ data class EpisodeDisplayable(
         characters = episode.characters,
         url = episode.url
     )
+
+    companion object
 }

@@ -6,7 +6,8 @@ import com.example.supertajnyprojekt.core.base.UiState
 import com.example.supertajnyprojekt.core.exception.ErrorMapper
 import com.example.supertajnyprojekt.features.episodes.domain.GetEpisodesUseCase
 import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
-import com.example.supertajnyprojekt.features.episodes.navigation.EpisodeNavigation
+import com.example.supertajnyprojekt.features.episodes.navigation.EpisodeNavigator
+import com.example.supertajnyprojekt.features.episodes.presentation.model.EpisodeDisplayable
 import com.example.supertajnyprojekt.mock.mock
 import com.example.supertajnyprojekt.utils.ViewModelTest
 import com.example.supertajnyprojekt.utils.getOrAwaitValue
@@ -20,11 +21,27 @@ import org.junit.jupiter.api.Test
 internal class EpisodeViewModelTest : ViewModelTest() {
 
     @Test
+    fun `WHEN episode is clicked THAN open episode details screen`() {
+        //given
+        val useCase = mockk<GetEpisodesUseCase>(relaxed = true)
+        val errorMapper = mockk<ErrorMapper>(relaxed = true)
+        val episodeNavigator = mockk<EpisodeNavigator>(relaxed = true)
+        val viewModel = EpisodeViewModel(useCase, episodeNavigator, errorMapper)
+        val episodeDisplayable = EpisodeDisplayable.mock()
+
+        //when
+        viewModel.onEpisodeClick(episodeDisplayable)
+
+        //then
+        verify { episodeNavigator.openEpisodeDetailsScreen(episodeDisplayable) }
+    }
+
+    @Test
     fun `WHEN episode live data is observed THEN set pending state`() {
         //given
         val useCase = mockk<GetEpisodesUseCase>(relaxed = true)
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val episodeNavigator = mockk<EpisodeNavigation>(relaxed = true)
+        val episodeNavigator = mockk<EpisodeNavigator>(relaxed = true)
         val viewModel = EpisodeViewModel(useCase, episodeNavigator, errorMapper)
 
         //when
@@ -39,7 +56,7 @@ internal class EpisodeViewModelTest : ViewModelTest() {
         //given
         val useCase = mockk<GetEpisodesUseCase>(relaxed = true)
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val episodeNavigator = mockk<EpisodeNavigation>(relaxed = true)
+        val episodeNavigator = mockk<EpisodeNavigator>(relaxed = true)
         val viewModel = EpisodeViewModel(useCase, episodeNavigator, errorMapper)
 
         //when
@@ -60,7 +77,7 @@ internal class EpisodeViewModelTest : ViewModelTest() {
             }
         }
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val episodeNavigator = mockk<EpisodeNavigation>(relaxed = true)
+        val episodeNavigator = mockk<EpisodeNavigator>(relaxed = true)
         val viewModel = EpisodeViewModel(useCase, episodeNavigator, errorMapper)
 
         // when
@@ -88,7 +105,7 @@ internal class EpisodeViewModelTest : ViewModelTest() {
 
         val observer = mockk<Observer<String>>(relaxed = true)
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val episodeNavigator = mockk<EpisodeNavigation>(relaxed = true)
+        val episodeNavigator = mockk<EpisodeNavigator>(relaxed = true)
         val viewModel = EpisodeViewModel(useCase, episodeNavigator, errorMapper)
 
         //when

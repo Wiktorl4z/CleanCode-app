@@ -13,6 +13,7 @@ import com.example.supertajnyprojekt.features.characters.domain.model.CharacterL
 import com.example.supertajnyprojekt.features.characters.domain.model.CharacterOriginLocation
 import com.example.supertajnyprojekt.features.episodes.data.local.model.EpisodeCached
 import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
+import com.example.supertajnyprojekt.features.episodes.presentation.model.EpisodeDisplayable
 import com.example.supertajnyprojekt.features.locations.data.local.model.LocationCached
 import com.example.supertajnyprojekt.features.locations.domain.model.Location
 import org.jetbrains.annotations.TestOnly
@@ -173,5 +174,15 @@ fun Character.Companion.mock() = Character(
     species = "species",
     status = "status",
     type = "type",
+    url = "url"
+)
+
+@TestOnly
+fun EpisodeDisplayable.Companion.mock() = EpisodeDisplayable(
+    airDate = "airDate",
+    characters = listOf(),
+    code = "code",
+    id = 1,
+    name = "name",
     url = "url"
 )
