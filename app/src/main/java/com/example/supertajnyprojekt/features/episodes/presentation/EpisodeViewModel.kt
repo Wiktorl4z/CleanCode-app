@@ -13,7 +13,7 @@ import com.example.supertajnyprojekt.features.episodes.presentation.model.Episod
 
 class EpisodeViewModel(
     private val getEpisodesUseCase: GetEpisodesUseCase,
-    private val episodeNavigation: EpisodeNavigator,
+    private val episodeNavigator: EpisodeNavigator,
     errorMapper: ErrorMapper
 ) : BaseViewModel(errorMapper) {
 
@@ -41,6 +41,6 @@ class EpisodeViewModel(
     }
 
     fun onEpisodeClick(episode: EpisodeDisplayable) {
-        episodeNavigation.openEpisodeDetailsScreen(episode)
+        episodeNavigator.openEpisodeDetailsScreen(episode)
     }
 }

@@ -6,6 +6,8 @@ import com.example.supertajnyprojekt.core.base.UiState
 import com.example.supertajnyprojekt.core.exception.ErrorMapper
 import com.example.supertajnyprojekt.features.characters.domain.GetCharacterUseCase
 import com.example.supertajnyprojekt.features.characters.domain.model.Character
+import com.example.supertajnyprojekt.features.characters.navigation.CharacterNavigator
+import com.example.supertajnyprojekt.features.characters.presentation.model.CharacterDisplayable
 import com.example.supertajnyprojekt.mock.mock
 import com.example.supertajnyprojekt.utils.ViewModelTest
 import com.example.supertajnyprojekt.utils.getOrAwaitValue
@@ -19,11 +21,28 @@ import org.junit.jupiter.api.Test
 internal class CharacterViewModelTest : ViewModelTest() {
 
     @Test
+    fun `WHEN character is clicked THAN open character details screen`() {
+        //given
+        val useCase = mockk<GetCharacterUseCase>(relaxed = true)
+        val errorMapper = mockk<ErrorMapper>(relaxed = true)
+        val characterNavigator = mockk<CharacterNavigator>(relaxed = true)
+        val viewModel = CharacterViewModel(useCase, characterNavigator, errorMapper)
+        val characterDisplayable = CharacterDisplayable.mock()
+
+        //when
+        viewModel.onCharacterClick(characterDisplayable)
+
+        //then
+        verify { characterNavigator.openCharacterDetailsScreen(characterDisplayable) }
+    }
+
+    @Test
     fun `WHEN character live data is observed THEN set pending state`() {
         //given
         val useCase = mockk<GetCharacterUseCase>(relaxed = true)
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val viewModel = CharacterViewModel(useCase, errorMapper)
+        val characterNavigator = mockk<CharacterNavigator>(relaxed = true)
+        val viewModel = CharacterViewModel(useCase, characterNavigator, errorMapper)
 
         //when
         viewModel.characters.observeForTesting()
@@ -37,7 +56,8 @@ internal class CharacterViewModelTest : ViewModelTest() {
         //given
         val useCase = mockk<GetCharacterUseCase>(relaxed = true)
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val viewModel = CharacterViewModel(useCase, errorMapper)
+        val characterNavigator = mockk<CharacterNavigator>(relaxed = true)
+        val viewModel = CharacterViewModel(useCase, characterNavigator, errorMapper)
 
         //when
         viewModel.characters.observeForTesting()
@@ -57,7 +77,8 @@ internal class CharacterViewModelTest : ViewModelTest() {
             }
         }
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val viewModel = CharacterViewModel(useCase, errorMapper)
+        val characterNavigator = mockk<CharacterNavigator>(relaxed = true)
+        val viewModel = CharacterViewModel(useCase, characterNavigator, errorMapper)
 
         // when
         viewModel.characters.observeForTesting()
@@ -84,7 +105,8 @@ internal class CharacterViewModelTest : ViewModelTest() {
 
         val observer = mockk<Observer<String>>(relaxed = true)
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val viewModel = CharacterViewModel(useCase, errorMapper)
+        val characterNavigator = mockk<CharacterNavigator>(relaxed = true)
+        val viewModel = CharacterViewModel(useCase, characterNavigator, errorMapper)
 
         //when
         viewModel.message.observeForever(observer)

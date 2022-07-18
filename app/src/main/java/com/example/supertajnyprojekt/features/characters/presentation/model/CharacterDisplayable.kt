@@ -32,6 +32,8 @@ data class CharacterDisplayable(
         type = character.type,
         url = character.url
     )
+
+    companion object
 }
 
 data class CharacterOriginLocationDisplayable(
