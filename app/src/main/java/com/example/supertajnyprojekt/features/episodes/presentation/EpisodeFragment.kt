@@ -33,8 +33,5 @@ class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode
         viewModel.episodes.observe(this) {
             // code to display episodes
         }
-        viewModel.message.observe(this) {
-
-        }
     }
 }

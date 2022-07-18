@@ -33,8 +33,5 @@ class LocationFragment : BaseFragment<LocationViewModel>(R.layout.fragment_locat
         viewModel.locations.observe(this) {
             // code to display episodes
         }
-        viewModel.message.observe(this) {
-
-        }
     }
 }
