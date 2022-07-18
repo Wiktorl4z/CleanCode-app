@@ -1,6 +1,5 @@
 package com.example.supertajnyprojekt.features.episodes.navigation
 
-import androidx.core.os.bundleOf
 import com.example.supertajnyprojekt.R
 import com.example.supertajnyprojekt.core.navigation.FragmentNavigator
 import com.example.supertajnyprojekt.features.episodes.details.presentation.EpisodeDetailsFragment
@@ -12,7 +11,7 @@ class EpisodeNavigationImpl(
     override fun openEpisodeDetailsScreen(episode: EpisodeDisplayable) {
         fragmentNavigator.navigateTo(
             R.id.action_navigate_from_episodes_screen_to_episode_details_screen,
-            bundleOf(EpisodeDetailsFragment.EPISODE_DETAILS_KEY to episode)
+            EpisodeDetailsFragment.EPISODE_DETAILS_KEY to episode
         )
     }
 

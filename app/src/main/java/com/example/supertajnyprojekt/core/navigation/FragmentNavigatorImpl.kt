@@ -1,12 +1,11 @@
 package com.example.supertajnyprojekt.core.navigation
 
-import android.os.Bundle
 import androidx.annotation.IdRes
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
-import com.example.supertajnyprojekt.R
 import com.example.supertajnyprojekt.core.provider.ActivityProvider
 
 class FragmentNavigatorImpl(
@@ -23,11 +22,16 @@ class FragmentNavigatorImpl(
         ?.findFragmentById(navHostFragmentRes)
         ?.findNavController()
 
-    override fun navigateTo(
+    override fun navigateTo(destinationId: Int, fragmentTransaction: FragmentTransaction?) {
+        navigateTo<Unit>(destinationId, null, fragmentTransaction)
+    }
+
+    override fun <T> navigateTo(
         destinationId: Int,
-        bundle: Bundle?,
+        param: Pair<String, T>?,
         fragmentTransaction: FragmentTransaction?
     ) {
+        val bundle = param?.let { bundleOf(it) }
         val navOptions = fragmentTransaction?.let {
             navOptions {
                 anim { enter = it.enterAnim }

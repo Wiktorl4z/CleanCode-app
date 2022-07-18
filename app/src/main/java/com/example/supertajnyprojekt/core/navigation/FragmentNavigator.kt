@@ -1,12 +1,17 @@
 package com.example.supertajnyprojekt.core.navigation
 
-import android.os.Bundle
 import androidx.annotation.IdRes
 
 interface FragmentNavigator {
+
     fun navigateTo(
         @IdRes destinationId: Int,
-        bundle: Bundle? = null,
+        fragmentTransaction: FragmentTransaction? = null
+    )
+
+    fun <T> navigateTo(
+        @IdRes destinationId: Int,
+        param: Pair<String, T>? = null,
         fragmentTransaction: FragmentTransaction? = null
     )
 
