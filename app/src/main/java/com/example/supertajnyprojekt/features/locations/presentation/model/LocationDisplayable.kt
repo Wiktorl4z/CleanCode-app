@@ -1,7 +1,11 @@
 package com.example.supertajnyprojekt.features.locations.presentation.model
 
+import android.os.Parcelable
 import com.example.supertajnyprojekt.features.locations.domain.model.Location
+import kotlinx.parcelize.Parcelize
 
+
+@Parcelize
 class LocationDisplayable(
     val dimension: String,
     val id: Int,
@@ -9,7 +13,7 @@ class LocationDisplayable(
     val residents: List<String>,
     val type: String,
     val url: String
-) {
+) : Parcelable {
     constructor(location: Location) : this(
         dimension = location.dimension,
         id = location.id,
@@ -18,4 +22,6 @@ class LocationDisplayable(
         type = location.type,
         url = location.url,
     )
+
+    companion object
 }

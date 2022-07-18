@@ -19,6 +19,7 @@ import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
 import com.example.supertajnyprojekt.features.episodes.presentation.model.EpisodeDisplayable
 import com.example.supertajnyprojekt.features.locations.data.local.model.LocationCached
 import com.example.supertajnyprojekt.features.locations.domain.model.Location
+import com.example.supertajnyprojekt.features.locations.presentation.model.LocationDisplayable
 import org.jetbrains.annotations.TestOnly
 
 @TestOnly
@@ -211,3 +212,14 @@ fun CharacterDisplayable.Companion.mock() = CharacterDisplayable(
     type = "type",
     url = "url"
 )
+
+@TestOnly
+fun LocationDisplayable.Companion.mock() = LocationDisplayable(
+    dimension = "dimension",
+    id = 1,
+    name = "location remote name",
+    residents = emptyList(),
+    type = "location remote type",
+    url = "episode url"
+)
+
