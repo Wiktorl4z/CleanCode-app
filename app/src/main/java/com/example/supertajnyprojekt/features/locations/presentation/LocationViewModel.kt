@@ -8,10 +8,12 @@ import com.example.supertajnyprojekt.core.base.BaseViewModel
 import com.example.supertajnyprojekt.core.exception.ErrorMapper
 import com.example.supertajnyprojekt.features.locations.domain.GetLocationUseCase
 import com.example.supertajnyprojekt.features.locations.domain.model.Location
+import com.example.supertajnyprojekt.features.locations.navigation.LocationNavigator
 import com.example.supertajnyprojekt.features.locations.presentation.model.LocationDisplayable
 
 class LocationViewModel(
     private val getLocationUseCase: GetLocationUseCase,
+    private val locationNavigator: LocationNavigator,
     errorMapper: ErrorMapper
 ) : BaseViewModel(errorMapper) {
 
@@ -36,5 +38,9 @@ class LocationViewModel(
             result.onSuccess { locationLiveData.value = it }
             result.onFailure { handleFailure(it) }
         }
+    }
+
+    fun onLocationClick(location: LocationDisplayable) {
+        locationNavigator.openLocationDetailsScreen(location)
     }
 }

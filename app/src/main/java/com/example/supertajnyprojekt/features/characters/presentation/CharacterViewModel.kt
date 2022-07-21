@@ -8,10 +8,12 @@ import com.example.supertajnyprojekt.core.base.BaseViewModel
 import com.example.supertajnyprojekt.core.exception.ErrorMapper
 import com.example.supertajnyprojekt.features.characters.domain.GetCharacterUseCase
 import com.example.supertajnyprojekt.features.characters.domain.model.Character
+import com.example.supertajnyprojekt.features.characters.navigation.CharacterNavigator
 import com.example.supertajnyprojekt.features.characters.presentation.model.CharacterDisplayable
 
 class CharacterViewModel(
     private val getCharacterUseCase: GetCharacterUseCase,
+    private val characterNavigator: CharacterNavigator,
     errorMapper: ErrorMapper
 ) : BaseViewModel(errorMapper) {
 
@@ -37,4 +39,9 @@ class CharacterViewModel(
             result.onFailure { handleFailure(it) }
         }
     }
+
+    fun onCharacterClick(characterDisplayable: CharacterDisplayable) {
+        characterNavigator.openCharacterDetailsScreen(characterDisplayable)
+    }
+
 }

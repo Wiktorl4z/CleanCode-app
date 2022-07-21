@@ -2,6 +2,7 @@ package com.example.supertajnyprojekt.features.characters.data.repository
 
 import com.example.supertajnyprojekt.core.api.RickAndMortyApi
 import com.example.supertajnyprojekt.core.api.model.response.CharacterResponse
+import com.example.supertajnyprojekt.core.exception.ErrorWrapper
 import com.example.supertajnyprojekt.core.network.NetworkStateProvider
 import com.example.supertajnyprojekt.features.characters.data.local.CharacterDao
 import com.example.supertajnyprojekt.features.characters.data.local.model.CharacterCached
@@ -27,8 +28,9 @@ internal class CharacterRepositoryImplTest {
             every { isNetworkAvailable() } returns true
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: CharacterRepository =
-            CharacterRepositoryImpl(api, characterDao, networkStateProvider)
+            CharacterRepositoryImpl(api, characterDao, networkStateProvider, errorWrapper)
 
         // when
         runBlocking { repository.getCharacters() }
@@ -48,8 +50,9 @@ internal class CharacterRepositoryImplTest {
             every { isNetworkAvailable() } returns true
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: CharacterRepository =
-            CharacterRepositoryImpl(api, characterDao, networkStateProvider)
+            CharacterRepositoryImpl(api, characterDao, networkStateProvider, errorWrapper)
 
         // when
         runBlocking { repository.getCharacters() }
@@ -72,8 +75,9 @@ internal class CharacterRepositoryImplTest {
             every { isNetworkAvailable() } returns false
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: CharacterRepository =
-            CharacterRepositoryImpl(api, characterDao, networkStateProvider)
+            CharacterRepositoryImpl(api, characterDao, networkStateProvider, errorWrapper)
 
         // when
         runBlocking { repository.getCharacters() }

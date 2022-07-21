@@ -16,6 +16,6 @@ val episodeModule = module {
     factory { GetEpisodesUseCase(get()) }
 
     //presentation
-    viewModel { EpisodeViewModel(get(), get()) }
+    viewModel { EpisodeViewModel(get(), get(), get()) }
     factory { EpisodeFragment() }
 }

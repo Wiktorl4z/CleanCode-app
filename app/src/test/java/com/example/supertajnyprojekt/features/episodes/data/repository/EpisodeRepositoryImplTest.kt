@@ -2,6 +2,7 @@ package com.example.supertajnyprojekt.features.episodes.data.repository
 
 import com.example.supertajnyprojekt.core.api.RickAndMortyApi
 import com.example.supertajnyprojekt.core.api.model.response.EpisodeResponse
+import com.example.supertajnyprojekt.core.exception.ErrorWrapper
 import com.example.supertajnyprojekt.core.network.NetworkStateProvider
 import com.example.supertajnyprojekt.features.episodes.data.local.EpisodeDao
 import com.example.supertajnyprojekt.features.episodes.data.local.model.EpisodeCached
@@ -26,9 +27,9 @@ internal class EpisodeRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider, errorWrapper)
 
         // when
         runBlocking { repository.getEpisodes() }
@@ -48,8 +49,9 @@ internal class EpisodeRepositoryImplTest {
             every { isNetworkAvailable() } returns true
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider, errorWrapper)
 
         // when
         runBlocking { repository.getEpisodes() }
@@ -69,8 +71,9 @@ internal class EpisodeRepositoryImplTest {
             every { isNetworkAvailable() } returns false
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider, errorWrapper)
 
         // when
         runBlocking { repository.getEpisodes() }

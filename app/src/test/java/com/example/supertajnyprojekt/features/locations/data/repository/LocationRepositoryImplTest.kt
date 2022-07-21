@@ -2,6 +2,7 @@ package com.example.supertajnyprojekt.features.locations.data.repository
 
 import com.example.supertajnyprojekt.core.api.RickAndMortyApi
 import com.example.supertajnyprojekt.core.api.model.response.LocationResponse
+import com.example.supertajnyprojekt.core.exception.ErrorWrapper
 import com.example.supertajnyprojekt.core.network.NetworkStateProvider
 import com.example.supertajnyprojekt.features.locations.data.local.LocationDao
 import com.example.supertajnyprojekt.features.locations.data.local.model.LocationCached
@@ -27,8 +28,9 @@ internal class LocationRepositoryImplTest {
             every { isNetworkAvailable() } returns true
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: LocationRepository =
-            LocationRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         // when
         runBlocking { repository.getLocations() }
@@ -48,8 +50,9 @@ internal class LocationRepositoryImplTest {
             every { isNetworkAvailable() } returns true
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: LocationRepository =
-            LocationRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         // when
         runBlocking { repository.getLocations() }
@@ -69,8 +72,9 @@ internal class LocationRepositoryImplTest {
             every { isNetworkAvailable() } returns false
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: LocationRepository =
-            LocationRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         // when
         runBlocking { repository.getLocations() }
