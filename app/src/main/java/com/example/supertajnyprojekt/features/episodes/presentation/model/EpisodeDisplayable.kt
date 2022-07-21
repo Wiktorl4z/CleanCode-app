@@ -2,6 +2,7 @@ package com.example.supertajnyprojekt.features.episodes.presentation.model
 
 import android.os.Parcelable
 import com.example.supertajnyprojekt.features.episodes.domain.model.Episode
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 
@@ -23,6 +24,9 @@ data class EpisodeDisplayable(
         characters = episode.characters,
         url = episode.url
     )
+
+    @IgnoredOnParcel
+    val fullName = "$code: $name"
 
     companion object
 }
