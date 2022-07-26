@@ -1,21 +1,24 @@
 package com.example.supertajnyprojekt.features.characters.data.local.model
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.supertajnyprojekt.features.characters.domain.model.Character
 import com.example.supertajnyprojekt.features.characters.domain.model.CharacterLastLocation
 import com.example.supertajnyprojekt.features.characters.domain.model.CharacterOriginLocation
 
-@Entity
-class CharacterCached(
+@Entity(tableName = "character")
+data class CharacterCached(
     @PrimaryKey
     val id: Int,
     val created: String,
     val episode: List<String>,
     val gender: String,
     val image: String,
+    @Embedded
     val location: CharacterLastLocationCached,
     val name: String,
+    @Embedded
     val origin: CharacterOriginLocationCached,
     val species: String,
     val status: String,
@@ -28,9 +31,9 @@ class CharacterCached(
         episode = character.episode,
         gender = character.gender,
         image = character.image,
-        location = CharacterLastLocationCached(character.location),
+        location = CharacterLastLocationCached(character.characterLastLocation),
         name = character.name,
-        origin = CharacterOriginLocationCached(character.origin),
+        origin = CharacterOriginLocationCached(character.characterOriginLocation),
         species = character.species,
         status = character.status,
         type = character.type,
@@ -54,33 +57,33 @@ class CharacterCached(
         url
     )
 }
-
+@Entity
 data class CharacterOriginLocationCached(
-    val name: String,
-    val url: String
+    val characterOriginLocationCachedName: String,
+    val characterOriginLocationUrl: String
 ) {
     constructor(location: CharacterOriginLocation) : this(
-        name = location.name,
-        url = location.url
+        characterOriginLocationCachedName = location.name,
+        characterOriginLocationUrl = location.url
     )
 
     fun toOriginLocation() = CharacterOriginLocation(
-        name = name,
-        url = url
+        name = characterOriginLocationCachedName,
+        url = characterOriginLocationUrl
     )
 }
-
+@Entity
 data class CharacterLastLocationCached(
-    val name: String,
-    val url: String
+    val characterLastLocationCachedName: String,
+    val characterLastLocationCachedUrl: String
 ) {
     constructor(location: CharacterLastLocation) : this(
-        name = location.name,
-        url = location.url
+        characterLastLocationCachedName = location.name,
+        characterLastLocationCachedUrl = location.url
     )
 
     fun toLastLocation() = CharacterLastLocation(
-        name = name,
-        url = url
+        name = characterLastLocationCachedName,
+        url = characterLastLocationCachedUrl
     )
 }

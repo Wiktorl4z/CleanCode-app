@@ -13,6 +13,10 @@ class EpisodeAdapter : BindableAdapter<EpisodeDisplayable>,
     var listener: ((EpisodeDisplayable) -> Unit)? = null
     private val episodes = mutableListOf<EpisodeDisplayable>()
 
+    fun setOnEpisodeClickListener(listener: (EpisodeDisplayable) -> Unit) {
+        this.listener = listener
+    }
+
     override fun setItems(items: List<EpisodeDisplayable>) {
         if (episodes.isNotEmpty()) this.episodes.clear()
         this.episodes.addAll(items)
@@ -36,7 +40,7 @@ class EpisodeAdapter : BindableAdapter<EpisodeDisplayable>,
         RecyclerView.ViewHolder(binding.root) {
         fun bind(episode: EpisodeDisplayable) {
             with(binding) {
-                binding.item = episode
+                binding.episode = episode
                 listener?.let { root.setOnClickListener { it(episode) } }
                 binding.executePendingBindings()
             }

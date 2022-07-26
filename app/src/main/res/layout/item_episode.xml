@@ -8,7 +8,7 @@
         <import type="com.example.supertajnyprojekt.R" />
 
         <variable
-            name="item"
+            name="episode"
             type="com.example.supertajnyprojekt.features.episodes.presentation.model.EpisodeDisplayable" />
     </data>
 
@@ -22,7 +22,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{item.fullName}"
+            android:text="@{episode.fullName}"
             tools:text="S01E01 Pilot" />
 
         <TextView
@@ -30,15 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{item.airDate}"
+            android:text="@{episode.airDate}"
             tools:text="December 2, 2013" />
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:imageUrl="@{item.url}"
-            app:placeholder="@{R.drawable.ic_launcher_background}" />
 
     </LinearLayout>
 </layout>

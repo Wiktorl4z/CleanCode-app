@@ -12,8 +12,7 @@ import androidx.fragment.app.Fragment
 abstract class BaseFragment<T : BaseViewModel, S : ViewDataBinding>(
     private val viewModelId: Int,
     @LayoutRes layoutRes: Int
-) :
-    Fragment(layoutRes) {
+) : Fragment(layoutRes) {
 
     abstract val viewModel: T
     var binding: S? = null

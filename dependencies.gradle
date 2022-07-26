@@ -55,10 +55,10 @@ ext {
             loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:" + okhttpAndLoggingVersion
     ]
 
-    def roomRuntimeVersion = "2.4.2"
-    roomDependencies = [
-            roomRuntime: "androidx.room:room-runtime:" + roomRuntimeVersion,
-    ]
+    def roomVersion = "2.4.2"
+    roomDependency = "androidx.room:room-runtime:" + roomVersion
+    roomKaptDependency = "androidx.room:room-compiler:" + roomVersion
+    roomKtxDependency = "androidx.room:room-ktx:" + roomVersion
 
     def junitJupiterVersion = "5.8.2"
     def mockkVersion = "1.12.2"

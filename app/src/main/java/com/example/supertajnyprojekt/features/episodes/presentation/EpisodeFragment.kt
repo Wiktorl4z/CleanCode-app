@@ -1,6 +1,5 @@
 package com.example.supertajnyprojekt.features.episodes.presentation
 
-import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.supertajnyprojekt.BR
@@ -12,7 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class EpisodeFragment : BaseFragment<EpisodeViewModel, FragmentEpisodeBinding>(
-    BR.viewModel,
+    BR.episodeViewModel,
     R.layout.fragment_episode
 ) {
 
@@ -42,5 +41,6 @@ class EpisodeFragment : BaseFragment<EpisodeViewModel, FragmentEpisodeBinding>(
             setHasFixedSize(true)
             adapter = episodeAdapter
         }
+        episodeAdapter.setOnEpisodeClickListener { viewModel.onEpisodeClick(it) }
     }
 }

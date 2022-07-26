@@ -9,7 +9,7 @@ import com.example.supertajnyprojekt.features.characters.data.local.model.Charac
 @Dao
 interface CharacterDao {
 
-    @Query("SELECT * FROM EpisodeCached")
+    @Query("SELECT * FROM character")
     suspend fun getCharacters(): List<CharacterCached>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

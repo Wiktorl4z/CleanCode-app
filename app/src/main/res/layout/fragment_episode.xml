@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="episodeViewModel"
             type="com.example.supertajnyprojekt.features.episodes.presentation.EpisodeViewModel" />
     </data>
 
@@ -21,14 +21,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="16dp"
-            android:text="@{String.valueOf(viewModel.episodes.size())}"
+            android:text="@{String.valueOf(episodeViewModel.episodes.size())}"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:items="@{viewModel.episodes}"
+            app:items="@{episodeViewModel.episodes}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:showOnPendingState="@{viewModel.uiState}" />
+            app:showOnPendingState="@{episodeViewModel.uiState}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
