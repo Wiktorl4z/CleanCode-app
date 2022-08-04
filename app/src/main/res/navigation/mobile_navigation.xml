@@ -41,7 +41,7 @@
         android:id="@+id/episodeDetailsFragment"
         android:name="com.example.supertajnyprojekt.features.episodes.details.presentation.EpisodeDetailsFragment"
         android:label="@string/title_episode_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_episode_details" />
     <fragment
         android:id="@+id/locationDetailsFragment"
         android:name="com.example.supertajnyprojekt.features.locations.details.presentation.LocationDetailsFragment"

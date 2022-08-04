@@ -13,6 +13,7 @@ import com.example.supertajnyprojekt.core.exception.ErrorWrapper
 import com.example.supertajnyprojekt.core.exception.ErrorWrapperImpl
 import com.example.supertajnyprojekt.core.navigation.FragmentNavigator
 import com.example.supertajnyprojekt.core.navigation.FragmentNavigatorImpl
+import com.example.supertajnyprojekt.core.network.NetworkStateProvider
 import com.example.supertajnyprojekt.core.network.NetworkStateProviderImpl
 import com.example.supertajnyprojekt.core.provider.ActivityProvider
 import org.koin.android.ext.koin.androidApplication
@@ -24,7 +25,7 @@ val appModule = module {
     factory { GridLayoutManager(androidContext(), 2) }
     factory { DividerItemDecoration(androidContext(), LinearLayoutManager.VERTICAL) }
     factory { androidContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager }
-    factory { NetworkStateProviderImpl(get()) }
+    factory<NetworkStateProvider> { NetworkStateProviderImpl(get()) }
     factory<ErrorWrapper> { ErrorWrapperImpl() }
     factory<ErrorMapper> { ErrorMapperImpl(androidContext()) }
     single(createdAtStart = true) { ActivityProvider(androidApplication()) }

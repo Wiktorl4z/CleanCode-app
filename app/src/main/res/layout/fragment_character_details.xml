@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".features.characters.presentation.CharacterDetailsFragment">
+
+    <data>
+
+        <variable
+            name="characterDetailsViewModel"
+            type="com.example.supertajnyprojekt.features.characters.details.presentation.CharacterDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/character_details_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{characterDetailsViewModel.character.name}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/character_name" />
+
+        <TextView
+            android:id="@+id/character_details_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{characterDetailsViewModel.character.status}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/character_details_name"
+            tools:text="@string/character_status" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

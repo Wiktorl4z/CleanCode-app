@@ -130,9 +130,9 @@ fun CharacterCached.Companion.mock() = CharacterCached(
     episode = emptyList(),
     gender = "character gender",
     image = "image url",
-    location = CharacterLastLocationCached(name = "location name", url = "location url"),
+    location = CharacterLastLocationCached(characterLastLocationCachedName = "location name", characterLastLocationCachedUrl = "location url"),
     name = "character name",
-    origin = CharacterOriginLocationCached(name = "location name", url = "location url"),
+    origin = CharacterOriginLocationCached(characterOriginLocationCachedName = "location name", characterOriginLocationUrl = "location url"),
     species = "character species",
     status = "character status",
     type = "character type",
@@ -166,12 +166,12 @@ fun Character.Companion.mock() = Character(
     gender = "gender",
     id = 1,
     image = "image",
-    location = CharacterLastLocation(
+    characterLastLocation = CharacterLastLocation(
         name = "location name",
         url = "location url"
     ),
     name = "character name",
-    origin = CharacterOriginLocation(
+    characterOriginLocation = CharacterOriginLocation(
         name = "location name",
         url = "location url"
     ),

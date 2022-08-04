@@ -1,37 +1,46 @@
 package com.example.supertajnyprojekt.features.episodes.presentation
 
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.supertajnyprojekt.BR
 import com.example.supertajnyprojekt.R
 import com.example.supertajnyprojekt.core.base.BaseFragment
+import com.example.supertajnyprojekt.databinding.FragmentEpisodeBinding
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode) {
+class EpisodeFragment : BaseFragment<EpisodeViewModel, FragmentEpisodeBinding>(
+    BR.episodeViewModel,
+    R.layout.fragment_episode
+) {
 
     override val viewModel: EpisodeViewModel by viewModel()
 
-    override fun initViews() {
-        super.initViews()
-        // initialize all view-related classes
+    private val linearLayoutManager: LinearLayoutManager by inject()
+    private val divider: DividerItemDecoration by inject()
+    private val episodeAdapter: EpisodeAdapter by inject()
+
+    override fun initViews(binding: FragmentEpisodeBinding) {
+        super.initViews(binding)
+        initRecycler(binding)
     }
 
-    override fun initObservers() {
-        super.initObservers()
-        subscribeToObservers()
-    }
-
-    override fun onIdleState() {
-        super.onIdleState()
-        // handle idle state
-    }
-
-    override fun onPendingState() {
-        super.onPendingState()
-        // handle pending state
-    }
-
-    private fun subscribeToObservers() {
-        viewModel.episodes.observe(this) {
-            // code to display episodes
+    override fun onDestroyView() {
+        binding?.recyclerView?.let {
+            it.layoutManager = null
+            it.adapter = null
         }
+        super.onDestroyView()
+    }
+
+    private fun initRecycler(binding: FragmentEpisodeBinding) {
+        with(binding.recyclerView) {
+            layoutManager = linearLayoutManager
+            addItemDecoration(divider)
+            setHasFixedSize(true)
+            adapter = episodeAdapter
+        }
+        episodeAdapter.setOnEpisodeClickListener { viewModel.onEpisodeClick(it) }
     }
 }

@@ -34,7 +34,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+        dataBinding true
     }
 
     kotlin.sourceSets.all {
@@ -65,8 +65,9 @@ dependencies {
     implementation networkDependencies.values()
 
     // room
-    implementation roomDependencies.values()
-    annotationProcessor "androidx.room:room-compiler:2.4.2"
+    implementation roomDependency
+    implementation roomKtxDependency
+    kapt roomKaptDependency
 
     //test dependencies
     implementation testDependencies.values()
